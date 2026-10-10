@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Antomata">
+  <defs><clipPath id="d"><circle cx="50" cy="50" r="50"/></clipPath></defs>
+  <circle cx="50" cy="50" r="50" fill="#F26B1D"/>
+  <g clip-path="url(#d)">
+    <circle cx="50" cy="101.06" r="23.4" fill="#0B0B0B"/>
+    <g id="a">
+      <polygon points="41.58,83.07 40.40,55.71 44.65,55.52 45.84,82.88" fill="#0B0B0B"/>
+      <polygon points="41.47,58.37 21.46,36.01 24.63,33.17 44.64,55.53" fill="#0B0B0B"/>
+      <polygon points="24.13,42.18 18.46,35.83 24.80,30.15 30.48,36.50" fill="#F4EFE6"/>
+    </g>
+    <use href="#a" transform="translate(100 0) scale(-1 1)"/>
+  </g>
+</svg>
