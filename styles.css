@@ -8,64 +8,67 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html { background: var(--carbon); }
 body {
   margin: 0;
-  background:
-    radial-gradient(120% 70% at 50% 112%, #F26B1D 0%, rgba(242, 107, 29, .55) 38%, rgba(242, 107, 29, 0) 72%),
-    linear-gradient(180deg, #0B0B0B 0%, #0B0B0B 42%, #2A1206 72%, #7A3410 100%);
-  background-color: var(--carbon);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  /* orange at the top, carbon at the bottom, mostly orange */
+  background: linear-gradient(180deg, #FF8A3D 0%, var(--ember) 45%, #C24E10 68%, #4A1D07 88%, var(--carbon) 100%);
   color: var(--bone);
   font: 400 17px/1.5 "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  display: flex;
-  flex-direction: column;
-  min-height: 100svh;
-  overflow: hidden;
 }
 
-#swarm { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
-
 main {
-  position: relative;
-  z-index: 1;
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 32px 20px;
 }
 
-.mark { width: clamp(72px, 12vw, 104px); height: auto; animation: bob 6s ease-in-out infinite; }
+/* Carbon panel keeps the orange logo and two-tone wordmark readable on the orange field */
+.panel {
+  background: var(--carbon);
+  border-radius: 28px;
+  padding: clamp(36px, 6vw, 72px) clamp(24px, 6vw, 88px);
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(11, 11, 11, .35);
+  max-width: 100%;
+}
 
+.lockup { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 2.2vw, 28px); }
+.mark { flex: none; width: clamp(48px, 9vw, 104px); height: auto; }
 .wordmark {
-  margin: 28px 0 0;
-  font: 700 clamp(3rem, 11vw, 6.5rem)/1 "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  font: 700 clamp(2.5rem, 9.5vw, 6.5rem)/1 "Space Grotesk", system-ui, sans-serif;
   letter-spacing: -.035em;
 }
 .w1 { color: var(--ember); }
 .w2 { color: var(--ember-light); }
 
-.tagline { margin: 18px 0 0; color: var(--ember-light); font-size: clamp(1.05rem, 2.4vw, 1.4rem); }
+.tagline { margin: clamp(16px, 2.4vw, 26px) 0 0; color: var(--ember-light); font-size: clamp(1.05rem, 2.4vw, 1.4rem); }
 
 .status {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 40px 0 0;
+  margin: clamp(28px, 4vw, 44px) 0 0;
   padding: 10px 18px;
-  border: 1px solid rgba(244, 239, 230, .2);
+  border: 1px solid rgba(244, 239, 230, .22);
   border-radius: 999px;
-  background: rgba(11, 11, 11, .6);
   font: 500 1rem/1 "Space Grotesk", system-ui, sans-serif;
   letter-spacing: .02em;
 }
 .dot { width: 9px; height: 9px; border-radius: 2px; background: var(--ember); animation: pulse 1.8s ease-in-out infinite; }
 
 .mail {
-  margin-top: 28px;
+  display: block;
+  width: fit-content;
+  margin: 26px auto 0;
   color: var(--bone);
   font-weight: 500;
   text-decoration: none;
@@ -76,11 +79,7 @@ main {
 .mail:hover { color: var(--ember-light); border-color: var(--ember-light); }
 .mail:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 5px; border-radius: 2px; }
 
-footer { position: relative; z-index: 1; padding: 20px; text-align: center; color: var(--carbon); font-size: .85rem; font-weight: 500; }
+footer { padding: 20px; text-align: center; color: var(--grey); font-size: .85rem; }
 
-@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .mark, .dot { animation: none; }
-}
+@media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
